@@ -10,7 +10,7 @@ const MyBookings = () => {
   useEffect(() => {
     async function fetchBookings() {
       const res = await fetch(
-        `http://localhost:5000/api/bookings/user/${email}`
+        `https://roamwithus.onrender.com/api/bookings/user/${email}`
       );
       const data = await res.json();
       setBookings(data);
@@ -21,7 +21,7 @@ const MyBookings = () => {
 
   async function handleDelete(id) {
   try {
-    await fetch(`http://localhost:5000/api/bookings/${id}`, {
+    await fetch(`https://roamwithus.onrender.com/api/bookings/${id}`, {
       method: "DELETE",
     });
 

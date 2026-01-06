@@ -7,7 +7,7 @@ const AdminBooking = () => {
 
   useEffect(() => {
     async function fetchBookings() {
-      const res = await fetch("http://localhost:5000/api/bookings");
+      const res = await fetch("https://roamwithus.onrender.com/api/bookings");
       const data = await res.json();
       setBookings(data);
     }
@@ -16,7 +16,7 @@ const AdminBooking = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:5000/api/bookings/${id}`, {
+    await fetch(`https://roamwithus.onrender.com/api/bookings/${id}`, {
       method: "DELETE",
     });
     setBookings(bookings.filter((b) => b._id !== id));

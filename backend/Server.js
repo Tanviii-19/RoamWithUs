@@ -5,7 +5,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://roamwithus.netlify.app/',
+  methods: ['GET', 'POST', 'DELETE', 'PUT'],
+  credentials: true
+}));
 // Middleware to parse JSON
 app.use(express.json());
 

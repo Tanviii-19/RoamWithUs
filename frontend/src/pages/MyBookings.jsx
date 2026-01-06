@@ -35,15 +35,23 @@ const MyBookings = () => {
   }
 }
 
-  if (bookings.length === 0) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <h2 className="text-xl font-semibold">
-          No bookings yet.
-        </h2>
-      </div>
-    );
-  }
+if (bookings.length === 0) {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center gap-4">
+      <h2 className="text-xl font-semibold">
+        No bookings yet.
+      </h2>
+
+      <button
+        onClick={() => navigate("/")}
+        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+      >
+        Back to Home
+      </button>
+    </div>
+  );
+}
+
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">

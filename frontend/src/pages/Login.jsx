@@ -61,6 +61,16 @@ const Login = () => {
               Back to Home
             </button>
         </form>
+        <details className="mt-4 text-sm text-gray-600 text-center">
+  <summary className="cursor-pointer text-blue-600">
+    Demo Login Credentials (Click to Expand)
+  </summary>
+  <p className="mt-2">Admin Email: <b>admin@gmail.com</b></p>
+  <p>Password: any</p>
+  <p className="mt-2">User Email: any random email will work</p>
+  <p>Password: any</p>
+</details>
+
       </div>
     </div>
 

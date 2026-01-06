@@ -138,9 +138,6 @@ className="menu dropdown-content mt-3 w-52 rounded-box bg-base-100 text-black p-
     <li>
       <button onClick={() => navigate("/login")}>User</button>
     </li>
-    <li>
-      <button onClick={() => navigate("/login")}>Admin</button>
-    </li>
   </ul>
 </li>
      )}

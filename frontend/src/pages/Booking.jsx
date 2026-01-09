@@ -12,49 +12,58 @@ const Booking = () => {
   const [people, setPeople] = useState(1);
   const [travelType, setTravelType] = useState("");
 
-  // ✅ email comes from login
+  
+
+  
   const email = localStorage.getItem("userEmail");
 
-  async function handleConfirm() {
-    if (
-      !name ||
-      !email ||
-      !mobile ||
-      !destination ||
-      !date ||
-      !travelType
-    ) {
-      alert("Please fill all fields");
-      return;
-    }
-
-    const bookingData = {
-      name,
-      email, // ✅ same email used everywhere
-      mobile,
-      destination,
-      date,
-      people,
-      travelType,
-    };
-
-    try {
-      const res = await fetch("https://roamwithus.onrender.com/api/bookings", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(bookingData),
-      });
-
-      if (!res.ok) throw new Error("Booking failed");
-
-      navigate("/booking-success");
-    } catch (error) {
-      console.error(error);
-      alert("Something went wrong");
-    }
+async function handleConfirm() {
+  if (
+    !name ||
+    !email ||
+    !mobile ||
+    !destination ||
+    !date ||
+    !travelType
+  ) {
+    alert("Please fill all fields");
+    return;
   }
+
+  // ✅ Mobile number validation (10 digits)
+  const mobileRegex = /^[0-9]{10}$/;
+  if (!mobileRegex.test(mobile)) {
+    alert("Please enter a valid 10-digit mobile number");
+    return;
+  }
+
+  const bookingData = {
+    name,
+    email,
+    mobile,
+    destination,
+    date,
+    people,
+    travelType,
+  };
+
+  try {
+    const res = await fetch("https://roamwithus.onrender.com/api/bookings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bookingData),
+    });
+
+    if (!res.ok) throw new Error("Booking failed");
+
+    navigate("/booking-success");
+  } catch (error) {
+    console.error(error);
+    alert("Something went wrong");
+  }
+}
 
   return (
     <div

@@ -50,7 +50,7 @@ async function handleConfirm() {
   };
 
   try {
-    setIsSubmitting(true); // disable button
+    setIsSubmitting(true);
     const res = await fetch("https://roamwithus.onrender.com/api/bookings", {
       method: "POST",
       headers: {
@@ -66,7 +66,7 @@ async function handleConfirm() {
     console.error(error);
     alert("Something went wrong");
   } finally {
-    setIsSubmitting(false); // re-enable if there was an error
+    setIsSubmitting(false);
   }
 }
 

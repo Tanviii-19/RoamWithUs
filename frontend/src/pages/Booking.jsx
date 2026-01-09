@@ -11,13 +11,15 @@ const Booking = () => {
   const [date, setDate] = useState("");
   const [people, setPeople] = useState(1);
   const [travelType, setTravelType] = useState("");
-
-  
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   
   const email = localStorage.getItem("userEmail");
 
+
 async function handleConfirm() {
+  if (isSubmitting) return; // prevent multiple clicks
+
   if (
     !name ||
     !email ||
@@ -30,7 +32,7 @@ async function handleConfirm() {
     return;
   }
 
-  // ✅ Mobile number validation (10 digits)
+  // Mobile number validation
   const mobileRegex = /^[0-9]{10}$/;
   if (!mobileRegex.test(mobile)) {
     alert("Please enter a valid 10-digit mobile number");
@@ -48,6 +50,7 @@ async function handleConfirm() {
   };
 
   try {
+    setIsSubmitting(true); // disable button
     const res = await fetch("https://roamwithus.onrender.com/api/bookings", {
       method: "POST",
       headers: {
@@ -62,6 +65,8 @@ async function handleConfirm() {
   } catch (error) {
     console.error(error);
     alert("Something went wrong");
+  } finally {
+    setIsSubmitting(false); // re-enable if there was an error
   }
 }
 
@@ -131,12 +136,15 @@ async function handleConfirm() {
           <option>Family</option>
         </select>
 
-        <button
-          onClick={handleConfirm}
-          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
-        >
-          Confirm Booking
-        </button>
+       <button
+  onClick={handleConfirm}
+  disabled={isSubmitting}
+  className={`w-full py-2 rounded-lg text-white transition ${
+    isSubmitting ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
+  }`}
+>
+  {isSubmitting ? "Booking..." : "Confirm Booking"}
+</button>
 
          <button
   onClick={() => navigate("/")}

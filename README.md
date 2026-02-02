@@ -19,7 +19,6 @@ The project demonstrates end-to-end development using modern frontend and backen
 - Mongoose (ODM)
 
 ---
-
 ## Features
 ### User
 - Auto-sliding informational section (About, Tips, Best Time, etc.)

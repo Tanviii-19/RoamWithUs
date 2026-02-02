@@ -4,7 +4,6 @@ RoamWithUs is a **full-stack web application** designed to explore and book trav
 The project demonstrates end-to-end development using modern frontend and backend technologies with role-based access.
 
 ---
-
 ## Tech Stack
 
 ### Frontend
@@ -22,7 +21,6 @@ The project demonstrates end-to-end development using modern frontend and backen
 ---
 
 ## Features
-
 ### User
 - Auto-sliding informational section (About, Tips, Best Time, etc.)
 - Book travel packages after login
@@ -34,8 +32,7 @@ The project demonstrates end-to-end development using modern frontend and backen
 - Restricted admin dashboard access
 
 ---
-
-## 🔐 Authentication & Authorization
+## Authentication & Authorization
 
 - Any valid email → **User role**
 - Admin access is assigned when logging in with:
